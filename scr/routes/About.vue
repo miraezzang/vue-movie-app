@@ -1,0 +1,80 @@
+<template>
+  <div class="about">
+    <div class="photo">
+      <Loader 
+        v-if="imageLoading"
+        absolute
+      />
+      <img 
+        :src="image" 
+        alt="name">
+    </div>
+    <div class="name">
+      {{ name }}
+    </div>
+    <div>{{ email }}</div>
+    <div>{{ blog }}</div>
+    <div>{{ phone }}</div>
+  </div>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+import Loader from '../components/Loader.vue'
+
+export default {
+  components: {
+    Loader
+  },
+  data() {
+    return {
+      imageLoading: true
+    }
+  },
+  computed: {
+    ...mapState('about', [
+      'image',
+      'name',
+      'email',
+      'blog',
+      'phone'
+    ]) 
+  },
+  mounted() {
+    this.init()
+  },
+  methods: {
+    async init() {
+      await this.$loadImage(this.image)
+      this.imageLoading = false
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../scss/main.scss";
+
+.about {
+  text-align: center;
+  .photo {
+    width: 250px;
+    height: 250px;
+    margin: 40px auto 20px;
+    padding: 30px;
+    border: 10px solid $gray-300;
+    border-radius: 50%; //px아니므로 원으로 나올 것임
+    box-sizing: border-box; //경계선이 페딩,경계선두께만큼 커지지 않는다.
+    background-color: $gray-200;
+    position: relative;
+    img {
+      width: 100%; //photo 안에서 가득찰 수 있도록
+    }
+  }
+  .name {
+    font-size: 40px;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 20px;
+  }
+}
+</style>
