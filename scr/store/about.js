@@ -5,6 +5,6 @@ export default {
     email: 'dnl.weoifj@gmail.com',
     blog: 'https://miraezzang.blog',
     phone: '+82-123-4566',
-    image: 'https://heropy.blog/css/images/logo.png'
+    image: 'https://lh3.googleusercontent.com/ogw/ANLem4ZxwhCwrZb7_r5rfWMqwxKUsIq3pQMuZuEtP27r=s64-c-mo'
   })
 }

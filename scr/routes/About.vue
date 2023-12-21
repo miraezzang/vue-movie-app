@@ -68,7 +68,8 @@ export default {
     background-color: $gray-200;
     position: relative;
     img {
-      width: 100%; //photo 안에서 가득찰 수 있도록
+      width: 100%;
+      border-radius: 50%; //photo 안에서 가득찰 수 있도록
     }
   }
   .name {
